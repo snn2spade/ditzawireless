@@ -1,3 +1,18 @@
+Meteor.methods({
+  'insertRoadData': function(src,dest,traveled_time){
+    console.log("insertRoadData is called");
+    src = ""+src;
+    dest = ""+dest;
+    let road = Road.findOne({ src: src, dest: dest });
+    if (road != null) {
+        if (road.traveled_time.length >= 5) {
+            road.traveled_time.shift();
+        }
+        let road_n = road.traveled_time.concat([traveled_time]);
+        Road.update(road._id, { $set: { traveled_time: road_n } });
+    }
+  }
+});
 Router.configure({
     // the default layout
     layoutTemplate: 'mainLayout',
@@ -36,15 +51,8 @@ Router.route("/carreply", { where: "server" })
         let src_time = car.log[car.log.length - 1].date;
         let dest = data.tower;
         let dest_time = data.date;
-        let road = Road.findOne({ src: src, dest: dest });
-        if (road != null) {
-            if (road.traveled_time.length >= 5) {
-                road.traveled_time.shift();
-            }
-            let traveled_time = (dest_time - src_time) / 60000;
-            let road_n = road.traveled_time.concat([traveled_time]);
-            Road.update(road._id, { $set: { traveled_time: road_n } });
-        }
+        let traveled_time = (dest_time - src_time) / 60000;
+        Meteor.call('insert_roadData',src,dest,traveled_time);
         //Respond to tower
         res.writeHead(200, { "Content-Type": "application/json" });
         var json = JSON.stringify({

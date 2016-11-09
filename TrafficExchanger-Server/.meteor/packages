@@ -23,6 +23,6 @@ insecure@1.0.7                # Allow all DB writes from clients (for prototypin
 twbs:bootstrap
 iron:router
 msavin:mongol
-themeteorchef:bert
+themeteorchef:bert@2.1.1
 fortawesome:fontawesome
-session
+session@1.1.7

@@ -2,6 +2,7 @@
   background-color: white;
   table-layout: fixed;
   width: 100%;
+  color:black;
     /*white-space: nowrap;*/
 }
 .table-bordered > thead > tr > th,
