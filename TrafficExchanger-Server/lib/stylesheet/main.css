@@ -3,6 +3,7 @@ html, body {
   font-family: 'Kanit', sans-serif ;
   height: 100%;
   background-color:grey;
+  overflow:hidden;
 }
 .table th,td{
   text-align: center;
@@ -19,7 +20,7 @@ html, body {
   position: relative;
 }
 .vertical-center {
-  background-color:pink;
+  /*background-color:pink;*/
   height:90%;
   width:90%;
   margin: 0px;
