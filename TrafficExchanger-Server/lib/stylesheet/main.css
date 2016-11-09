@@ -1,0 +1,49 @@
+/* CSS declarations go here */
+html, body {
+  font-family: 'Kanit', sans-serif ;
+  height: 100%;
+  background-color:grey;
+}
+.table th,td{
+  text-align: center;
+}
+.workspace{
+  padding:20px;
+  background-color:grey;
+  margin-left: 20%;
+  height:100vh;
+}
+.vertical-container{
+  /*border: 2px solid black;*/
+  width:100%;
+  position: relative;
+}
+.vertical-center {
+  background-color:pink;
+  height:90%;
+  width:90%;
+  margin: 0px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.hover-toggle{
+  cursor:default;
+}
+/* thai */
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Kanit'), local('Kanit-Regular'), url('/fonts/kanit-thai.woff2') format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Kanit'), local('Kanit-Regular'), url('/fonts/kanit-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}

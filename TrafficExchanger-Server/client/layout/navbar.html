@@ -1,0 +1,20 @@
+<template name="navbar">
+  <div class="nav-side-menu">
+      <div class="brand">Brand Logo</div>
+      <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+        <div class="menu-list">
+          <ul id="menu-content" class="menu-content collapse out">
+              <a  href="/">
+                <li class="{{#if isEqual page 'dashboardPage'}}active{{/if}}">
+                  <i class="fa fa-car fa-lg"></i> Dashboard
+                </li>
+              </a>
+              <a  href="/cartracker">
+                <li class="{{#if isEqual page 'cartrackerPage'}}active{{/if}}">
+                  <i class="fa fa-tachometer fa-lg"></i> Car Tracker
+                </li>
+              </a>
+          </ul>
+       </div>
+     </div>
+</template>
