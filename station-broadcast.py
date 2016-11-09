@@ -2,6 +2,7 @@
 import socket
 from time import sleep
 import json
+import datetime
 import requests
 address = ('192.168.255.255', 10101)
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -33,7 +34,7 @@ while True:
                 data['tower']=station_id
                 json_data = json.dumps(data)
                 r = requests.post('http://ditzawireless.tk/carreply', data = data)
-                print " data to send ::"+json_data
+                print recv_data+" : "+str(datetime.datetime.utcnow())+" data to send ::"+json_data
             else:
                 print "no receive"
 
