@@ -3,7 +3,7 @@ html, body {
   font-family: 'Kanit', sans-serif ;
   height: 100%;
   background-color:grey;
-  overflow:hidden;
+  overflow:auto;
 }
 .table th,td{
   text-align: center;

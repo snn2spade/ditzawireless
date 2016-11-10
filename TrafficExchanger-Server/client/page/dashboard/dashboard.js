@@ -65,7 +65,9 @@ if (Meteor.isClient) {
 }
 Tracker.autorun(function (c) {
   if(Road.findOne({src:"1",dest:"2"})!=null){
-    let time = Road.findOne({src:"1",dest:"2"}).traveled_time[4];
+    let road = Road.findOne({src:"1",dest:"2"});
+    if(road.traveled_time.length==0) return;
+    let time = road.traveled_time[road.traveled_time.length-1];
     if(time !=null && time<=5.00){
       $('#R12').css('background-color',"#8cc63f");
     }
@@ -86,7 +88,9 @@ Tracker.autorun(function (c) {
 });
 Tracker.autorun(function (c) {
   if(Road.findOne({src:"2",dest:"1"})!=null){
-    let time = Road.findOne({src:"2",dest:"1"}).traveled_time[4];
+    let road = Road.findOne({src:"2",dest:"1"});
+    if(road.traveled_time.length==0) return;
+    let time = road.traveled_time[road.traveled_time.length-1];
     if(time !=null && time<=5.00){
       $('#R21').css('background-color',"#8cc63f");
     }
@@ -107,7 +111,9 @@ Tracker.autorun(function (c) {
 });
 Tracker.autorun(function (c) {
   if(Road.findOne({src:"2",dest:"3"})!=null){
-    let time = Road.findOne({src:"2",dest:"3"}).traveled_time[4];
+    let road = Road.findOne({src:"2",dest:"3"});
+    if(road.traveled_time.length==0) return;
+    let time = road.traveled_time[road.traveled_time.length-1];
     if(time !=null && time<=5.00){
       $('#R23').css('background-color',"#8cc63f");
     }
@@ -128,7 +134,9 @@ Tracker.autorun(function (c) {
 });
 Tracker.autorun(function (c) {
   if(Road.findOne({src:"3",dest:"2"})!=null){
-    let time = Road.findOne({src:"3",dest:"2"}).traveled_time[4];
+    let road = Road.findOne({src:"3",dest:"2"});
+    if(road.traveled_time.length==0) return;
+    let time = road.traveled_time[road.traveled_time.length-1];
     if(time !=null && time<=5.00){
       $('#R32').css('background-color',"#8cc63f");
     }

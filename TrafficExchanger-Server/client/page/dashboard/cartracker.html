@@ -9,286 +9,48 @@
     .babababa li a{
       color:black;
     }
+    tr:hover td{
+      background-color:rgba(0, 0, 0, 0.1);
+    }
+    td{
+      background-color:white;
+    }
+}
   </style>
   <div class="container-fluid" style="height:98%;">
-    <div class="col-md-3" style="height:100%; overflow-y:scroll;">
+    <div class="row" style="height:10%">
+      <div class="col-md-3" style="text-align:center;color:white">
+        <h3>Car's serial</h3>
+      </div>
+      <div class="col-md-9" style="text-align:center;color:white">
+        <h3>Car's information</h3>
+      </div>
+    </div>
+    <div class="row" style="height:90%">
+      <div class="col-md-3" style="; overflow-y:scroll;height:100%">
         <ul class="nav babababa">
-          <li><a class="btn" href="#">{{name}}</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
-          <li><a class="btn" href="#">gg</a></li>
+          {{#each cars}}
+          <!-- <li><a class="btn car-btn" id="{{serial}}">{{serial}}</a></li> -->
+          <li><button id="{{serial}}" class="btn car-btn" style="width:100%;background-color:white;">{{serial}}</button></li>
+          {{/each}}
         </ul>
       </div>
-      <div class="col-md-9" style="height:100%; overflow-y:scroll;">
+      <div id="car-label" class="col-md-4" style="margin-left:2%;background-color:rgba(255,255,255,0.9);padding:20px;box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2), 0 0 15px 0 rgba(0, 0, 0, 0.19);">
+        <p>Serial : ---</p>
+        <p>Brand : ---</p>
+        <p>Color : ---</p>
+      </div>
+      <div class="col-md-5" style=" overflow-y:auto;height:100%;width:38%">
         <table class="table table-striped" >
           <thead>
-            <th>brand</th>
-            <th>color</th>
-            <th>serial</th>
             <th>tower</th>
             <th>date</th>
+            <th>time</th>
           </thead>
-          <tbody>
-            <tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr>
-            <tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr><tr>
-              <td>d</td>
-              <td>s</td>
-              <td>d</td>
-              <td>f</td>
-              <td>g</td>
-            </tr>
+          <tbody id="car-body">
           </tbody>
         </table>
       </div>
+    </div>
   </div>
 </template>

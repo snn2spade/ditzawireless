@@ -19,5 +19,5 @@ randomInsertRoadData = function(){
   console.log("trigger randomInsertRoadData Dice:"+rand);
 }
 Meteor.startup(() => {
-  Meteor.setInterval(randomInsertRoadData, 4000);
+  // Meteor.setInterval(randomInsertRoadData, 4000);
 });
