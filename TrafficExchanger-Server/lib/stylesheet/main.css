@@ -3,7 +3,8 @@ html, body {
   font-family: 'Kanit', sans-serif ;
   height: 100%;
   background-color:grey;
-  overflow:auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .table th,td{
   text-align: center;
@@ -12,11 +13,11 @@ html, body {
   padding:20px;
   background-color:grey;
   margin-left: 20%;
-  height:100vh;
+  height:100%;
+  /*width: 80%;*/
 }
 .vertical-container{
   /*border: 2px solid black;*/
-  width:100%;
   position: relative;
 }
 .vertical-center {

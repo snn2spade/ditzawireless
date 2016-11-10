@@ -21,6 +21,16 @@ Meteor.methods({
         log_n = log_n.concat([{ tower: tower, date: date }]);
         Car.update(car._id, { $set: { log: log_n, brand: brand, color: color } });
     }
+    // insert road data table
+    car = Car.findOne({ serial: serial });
+    if(car.log.length>=2){
+      let src = car.log[car.log.length - 2].tower;
+      let src_time = car.log[car.log.length - 2].date;
+      let dest = car.log[car.log.length - 1].tower;
+      let dest_time = car.log[car.log.length - 1].date;
+      let traveled_time = (dest_time - src_time) / 60000;
+      Meteor.call('insertRoadData',src,dest,traveled_time);
+    }
   }
 });
 Router.configure({
@@ -48,17 +58,7 @@ Router.route("/carreply", { where: "server" })
         // insert each car data table
         console.log("recieved>tower:"+data.tower + "," + data.serial + "," + data.brand + "," + data.color);
         Meteor.call('insertCarData',data.serial,data.brand,data.color,data.tower);
-        // insert road data table
-        let car = Car.findOne({ serial: data.serial });
-        if(car.log.length>=2){
-          let src = car.log[car.log.length - 2].tower;
-          let src_time = car.log[car.log.length - 2].date;
-          let dest = car.log[car.log.length - 1].tower;
-          let dest_time = car.log[car.log.length - 1].date;
-          let traveled_time = (dest_time - src_time) / 60000;
-          console.log("roadData inserted>"+src+","+dest+","+traveled_time);
-          Meteor.call('insertRoadData',src,dest,traveled_time);
-        }
+
         //Respond to tower
         // res.writeHead(200, { "Content-Type": "application/json" });
         // var json = JSON.stringify({

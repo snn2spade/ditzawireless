@@ -78,12 +78,12 @@ Tracker.autorun(function (c) {
       title: 'สภาพจราจรล่าสุด',
       message: 'ถ.เพชรบุรี ขาออก ใช้เวลา '+time.toFixed(2)+' นาที',
       type: 'info',
-      style: 'growl-bottom-right',
+      style: 'fixed-bottom',
       icon: 'fa-road'
     });
     Meteor.setTimeout(function(){
       $('#R12').css('background-color',"white");
-    },500);
+    },2000);
   }
 });
 Tracker.autorun(function (c) {
@@ -101,12 +101,12 @@ Tracker.autorun(function (c) {
       title: 'สภาพจราจรล่าสุด',
       message: 'ถ.เพชรบุรี ขาเข้า ใช้เวลา '+time.toFixed(2)+' นาที',
       type: 'info',
-      style: 'growl-bottom-right',
+      style: 'fixed-bottom',
       icon: 'fa-road'
     });
     Meteor.setTimeout(function(){
       $('#R21').css('background-color',"white");
-    },500);
+    },2000);
   }
 });
 Tracker.autorun(function (c) {
@@ -124,12 +124,12 @@ Tracker.autorun(function (c) {
       title: 'สภาพจราจรล่าสุด',
       message: 'ถ.ราชดำริ ขาออก ใช้เวลา '+time.toFixed(2)+' นาที',
       type: 'info',
-      style: 'growl-bottom-right',
+      style: 'fixed-bottom',
       icon: 'fa-road'
     });
     Meteor.setTimeout(function(){
       $('#R23').css('background-color',"white");
-    },500);
+    },2000);
   }
 });
 Tracker.autorun(function (c) {
@@ -147,11 +147,11 @@ Tracker.autorun(function (c) {
       title: 'สภาพจราจรล่าสุด',
       message: 'ถ.ราชดำริ ขาเข้า ใช้เวลา '+time.toFixed(2)+' นาที',
       type: 'info',
-      style: 'growl-bottom-right',
+      style: 'fixed-bottom',
       icon: 'fa-road'
     });
     Meteor.setTimeout(function(){
       $('#R32').css('background-color',"white");
-    },500);
+    },2000);
   }
 });
