@@ -42,5 +42,9 @@ if (Meteor.isClient){
             Meteor.clearInterval(Session.get("intervalId"));
             console.log("Pause button clicked.");
         },
+        "click #clean": ()=>{
+          Meteor.call('removeCarData');
+          Meteor.call('removeRoadData');
+        },
     })
 }

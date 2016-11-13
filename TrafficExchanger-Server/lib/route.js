@@ -3,6 +3,7 @@ Meteor.methods({
     src = ""+src;
     dest = ""+dest;
     let road = Road.findOne({ src: src, dest: dest });
+    console.log(typeof(road));
     if (road != null) {
         if (road.traveled_time.length >= 5) {
             road.traveled_time.shift();
@@ -30,6 +31,16 @@ Meteor.methods({
       let dest_time = car.log[car.log.length - 1].date;
       let traveled_time = (dest_time - src_time) / 60000;
       Meteor.call('insertRoadData',src,dest,traveled_time);
+    }
+  },
+  'removeCarData': function(){
+    Car.remove({});
+  },
+  'removeRoadData': function(){
+    let arr = Road.find().fetch()
+    for(let i=0;i<arr.length;i++){
+      // obj = Road.findOne({_id : arr[i]._id});
+      Road.update({_id:arr[i]._id}, { $set: { traveled_time: [] } });
     }
   }
 });
