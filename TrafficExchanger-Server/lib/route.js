@@ -3,7 +3,6 @@ Meteor.methods({
     src = ""+src;
     dest = ""+dest;
     let road = Road.findOne({ src: src, dest: dest });
-    console.log(typeof(road));
     if (road != null) {
         if (road.traveled_time.length >= 5) {
             road.traveled_time.shift();
@@ -20,16 +19,28 @@ Meteor.methods({
     } else {
         let log_n = car.log;
         log_n = log_n.concat([{ tower: tower, date: date }]);
+        if(log_n.length>1000){
+          for(let i=0;i<700;i++){
+            log_n.shift();
+          }
+        }
         Car.update(car._id, { $set: { log: log_n, brand: brand, color: color } });
     }
     // insert road data table
     car = Car.findOne({ serial: serial });
     if(car.log.length>=2){
       let src = car.log[car.log.length - 2].tower;
+      let pointer = car.log.length - 3;
+      while(pointer>=0){
+        if(car.log[pointer].tower == src) pointer=pointer-1;
+        else break;
+      }
+      pointer = pointer +1;
+      src = car.log[pointer].tower;
       let src_time = car.log[car.log.length - 2].date;
       let dest = car.log[car.log.length - 1].tower;
       let dest_time = car.log[car.log.length - 1].date;
-      let traveled_time = (dest_time - src_time) / 60000;
+      let traveled_time = (dest_time - src_time) / 1000;
       Meteor.call('insertRoadData',src,dest,traveled_time);
     }
   },

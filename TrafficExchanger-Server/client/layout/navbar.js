@@ -24,17 +24,42 @@ randomInsertRoadData = function(){
   }
   console.log("trigger randomInsertRoadData Dice:"+rand);
 }
+randomInsertCarData = function(){
+  //todo
+  let rand = parseInt(Math.random()*3);
+  let car_log;
+  let last_tw;
+  if (Car.findOne({"serial":"AB9999"})!=null){
+    car_log = Car.findOne({"serial":"AB9999"}).log;
+    last_tw = car_log[car_log.length-1].tower;
+  }
+  else{
+    last_tw =1;
+  }
+  let next_tw="";
+  if(last_tw==1) next_tw =2;
+  else if(last_tw==2){
+    let rand = parseInt(Math.random()*2);
+    console.log("trigger randomInsertCarData Dice:"+rand);
+    if( rand==1) next_tw=1;
+    else next_tw=3;
+  }
+  else next_tw=2;
+  setTimeout(function(){
+    Meteor.call('insertCarData',"AB9999","toyota","red",""+next_tw);
+  },Math.random()*2000);
+}
 if (Meteor.isClient){
     Template.navbar.events({
         "click #start-s": () =>{
             Meteor.clearInterval(Session.get("intervalId"));
-            intervalId = Meteor.setInterval(randomInsertRoadData,4000);
+            intervalId = Meteor.setInterval(randomInsertCarData,5000);
             Session.set("intervalId", intervalId);
             console.log ("Start button clicked.");
         },
         "click #start-q": () =>{
             Meteor.clearInterval(Session.get("intervalId"));
-            intervalId = Meteor.setInterval(randomInsertRoadData,2000);
+            intervalId = Meteor.setInterval(randomInsertCarData,7000);
             Session.set("intervalId", intervalId);
             console.log ("Start button clicked.");
         },
@@ -43,7 +68,7 @@ if (Meteor.isClient){
             console.log("Pause button clicked.");
         },
         "click #clean": ()=>{
-          Meteor.call('removeCarData');
+            Meteor.call('removeCarData');
           Meteor.call('removeRoadData');
         },
     })

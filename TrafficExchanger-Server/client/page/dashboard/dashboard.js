@@ -11,7 +11,13 @@ roadAVG = function(src,dest){
       avg = avg + road.traveled_time[i];
     }
       avg = avg/road.traveled_time.length;
-      return avg.toFixed(2)+ " min";
+      if(avg<60){
+        return avg.toFixed(2)+ " sec";
+      }
+      else{
+        avg=avg/60.0;
+        return avg.toFixed(2)+ " min";
+      }
   }
   else{
     return null;
@@ -28,7 +34,14 @@ if (Meteor.isClient) {
       let road = Road.findOne({src:src,dest:dest});
       if (road!=null){
         if(index<=road.traveled_time.length){
-          return road.traveled_time[road.traveled_time.length-index].toFixed(2)+ " min";
+          let time  =road.traveled_time[road.traveled_time.length-index].toFixed(2);
+          if(time<60){
+            return time + " sec";
+          }
+          else{
+            time = (time/60.0).toFixed(2);
+            return time + " min";
+          }
         }
         else{
           return "n/a";
@@ -42,14 +55,18 @@ if (Meteor.isClient) {
       return roadAVG(src,dest);
     },
     'color_url': function(src,dest){
+      //todo
       try{
         let avg = roadAVG(src,dest);
         if(avg=="n/a" ||avg==null){
           return "/img/"+src+dest+"GR.png";
         }
         else{
-          avg = parseFloat(roadAVG(src,dest).substr(0,4));
-          if(avg<=5.00){
+          avg = parseFloat(roadAVG(src,dest).substr(0));
+          if(roadAVG(src,dest).substr(5)=="min"){
+            avg = avg*60;
+          }
+          if(avg<=5.0){
             return "/img/"+src+dest+"G.png";
           }
           else{
@@ -127,7 +144,7 @@ Tracker.autorun(function (c) {
       style: 'fixed-bottom',
       icon: 'fa-road'
     });
-    Meteor.setTimeout(function(){
+    setTimeout(function(){
       $('#R23').css('background-color',"white");
     },2000);
   }
@@ -150,8 +167,42 @@ Tracker.autorun(function (c) {
       style: 'fixed-bottom',
       icon: 'fa-road'
     });
-    Meteor.setTimeout(function(){
+    setTimeout(function(){
       $('#R32').css('background-color',"white");
     },2000);
   }
+});
+Car.find().observeChanges({
+   added: function (id, fields) {
+   },
+   changed: function (id, fields) {
+     let car = Car.findOne({_id:id});
+     let str = "car : "+car.serial;
+     switch (car.log[car.log.length-1].tower) {
+        case "1":
+          $('#tw1-text').text(str);
+          $('.tw1-label').css('visibility','visible');
+          setTimeout(function(){
+            $('.tw1-label').css('visibility','hidden');
+          },1500);
+          break;
+        case "2":
+          $('#tw2-text').text(str);
+          $('.tw2-label').css('visibility','visible');
+          setTimeout(function(){
+            $('.tw2-label').css('visibility','hidden');
+          },1500);
+          break;
+        case "3":
+          $('#tw3-text').text(str);
+          $('.tw3-label').css('visibility','visible');
+          setTimeout(function(){
+            $('.tw3-label').css('visibility','hidden');
+          },1500);
+          break;
+     }
+     console.log("Have updated data with car serial : "+car.serial);
+   },
+   removed: function (id) {
+   }
 });
