@@ -1,5 +1,5 @@
 #!/bin/bash
-interface='wlan1'
+interface='wlan0'
 ifconfig $interface down
 iwconfig $interface mode ad-hoc
 iwconfig $interface essid magurow
